@@ -1,0 +1,199 @@
+html {
+  height: 94%;
+  font-size: 16px;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+  color: #27aedb;
+  text-align: center;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.input-names {
+  display: flex;
+  flex-direction: column;
+  min-height: 50%;
+  justify-content: space-between;
+  align-items: center;
+
+  .player-list {
+    list-style-type: none;
+    padding: 0;
+    border: 2px solid grey;
+    border-radius: 5px;
+    min-width: 25%;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .player-item {
+      border-bottom: 1px solid grey;
+      padding: 10px 5px;
+    }
+  }
+
+  .add-player-container {
+
+    .player-input {
+      border: 1px solid grey;
+      border-radius: 5px;
+      padding: 5px;
+      width: 96%;
+      font-size: 1.2em;
+    }
+
+    .btn-container {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      .add-btn, .finish-btn {
+        background-color: #27aedb;
+        outline: none;
+        border-radius: 5px;
+        margin: 3px;
+        color: white;
+        font-size: 1.2em;
+
+        &:disabled {
+          background-color: buttonface;
+
+          &:focus, &:hover {
+            background-color: buttonface;
+          }
+        }
+
+        &:focus, &:hover {
+          background-color: darken(#27aedb, 10%);
+        }
+      }
+    }
+  }
+}
+
+.game {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.scoreboard {
+  flex: 1 1 20%;
+  padding: 0;
+  margin: 10px 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .scoreboard-item {
+    list-style-type: none;
+    border-bottom: 2px solid black;
+    padding: 5px;
+  }
+
+  .selected {
+    background-color: lightyellow;
+  }
+}
+
+.controls-container {
+  display: flex;
+  flex: 1 1 40%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .controls {
+
+    .current-player {
+      font-size: 1.5em;
+    }
+
+    .input-container {
+      padding: 10px 0;
+
+      .score-input {
+        font-size: 1.1em;
+        padding: 5px;
+        border: 2px solid lightblue;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      .submit-score-btn {
+        font-size: 1.1em;
+        padding: 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+}
+
+.modal {
+  position: absolute;
+  margin-left: 40%;
+  top: 40%;
+  background-color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid gray;
+
+  .game-over {
+    text-align: center;
+    font-size: 1.1em;
+    padding-bottom: 10px;
+  }
+
+  .modal-btn {
+    background-color: #27aedb;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+  }
+}
+
+@media(max-height: 400px) {
+  .input-names {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media(max-width: 605px) {
+  .game {
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+}
