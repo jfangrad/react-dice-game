@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-dice-game",
   "version": "1.0.0",
-  "description": "Simple strpped down React boilerplate",
+  "description": "Simple Dice Game Score Keeping Tool",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
@@ -9,18 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jfangrad/react-boilerplate.git"
+    "url": "git+https://github.com/jfangrad/react-dice-game.git"
   },
   "keywords": [
     "React",
-    "boilerplate"
+    "game",
+    "dice"
   ],
   "author": "Justin Fagnrad",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jfangrad/react-boilerplate/issues"
+    "url": "https://github.com/jfangrad/react-dice-game/issues"
   },
-  "homepage": "https://github.com/jfangrad/react-boilerplate#readme",
+  "homepage": "https://github.com/jfangrad/react-dice-game#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
