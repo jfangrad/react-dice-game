@@ -2,14 +2,15 @@ import React from 'react';
 
 class Modal extends React.Component {
   componentDidMount() {
-    this.height = (window.innerHeight - this.modal.offsetHeight) / 2;
-    this.width = (window.innerWidth - this.modal.offsetWidth) / 2;
+    const height = this.modal ? this.modal.offsetHeight : 100;
+    const width = this.modal ? this.modal.offsetWidth : 100;
+
+    this.height = (window.innerHeight - height) / 2;
+    this.width = (window.innerWidth - width) / 2;
   }
 
   render() {
-    if (!isShowing) return null;
-
-    const { children, isShowing, playAgain, menu } = this.props;
+    const { children, playAgain, menu } = this.props;
 
     return (
       <div className="modal" ref={div => this.modal = div} style={{ top: this.height, left: this.width }}>

@@ -64,9 +64,11 @@ class Game extends PureComponent {
       <div className="game">
         <ScoreBoard {...this.props} {...this.state} />
         <Controls {...this.props} {...this.state} updateScore={this.updateScore} />
-        <Modal isShowing={gameOver} playAgain={this.playAgain} menu={menu}>
+        {gameOver &&
+        <Modal playAgain={this.playAgain} menu={menu}>
           <div className='game-over'>{`${winner} Wins!`}</div>
         </Modal>
+      }
       </div>
     );
   }
