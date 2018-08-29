@@ -4,7 +4,6 @@ import Controls from './Controls';
 import Modal from './Modal';
 
 class Game extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -35,7 +34,6 @@ class Game extends PureComponent {
       this.setState({ lastRound: player });
     }
 
-    console.log(lastRound, players[(currentPlayer + 1) % players.length]);
     if (lastRound === players[(currentPlayer + 1) % players.length]) {
       const winner = Object.entries(points).sort((a, b) => a[1] < b[1])[0][0];
       this.setState({ gameOver: true, winner });
@@ -57,18 +55,22 @@ class Game extends PureComponent {
   }
 
   render() {
-    const { gameOver, winner } = this.state;
+    const { gameOver, winner, lastRound } = this.state;
     const { menu } = this.props;
+    const lastRoundClass = lastRound ? 'last-round' : 'last-round display-none';
 
     return (
-      <div className="game">
-        <ScoreBoard {...this.props} {...this.state} />
-        <Controls {...this.props} {...this.state} updateScore={this.updateScore} />
-        {gameOver &&
-        <Modal playAgain={this.playAgain} menu={menu}>
-          <div className='game-over'>{`${winner} Wins!`}</div>
-        </Modal>
-      }
+      <div className="game-container">
+        <div className={lastRoundClass}>Last Round!</div>
+        <div className="game">
+          <ScoreBoard {...this.props} {...this.state} />
+          <Controls {...this.props} {...this.state} updateScore={this.updateScore} />
+          {gameOver &&
+          <Modal playAgain={this.playAgain} menu={menu}>
+            <div className='game-over'>{`${winner} Wins!`}</div>
+          </Modal>
+          }
+        </div>
       </div>
     );
   }

@@ -28,7 +28,7 @@ class App extends Component {
     const { inGame, players } = this.state;
     return (
       <div className="app">
-        <h1>Dice Game!</h1>
+        {!inGame && <h1>Dice Game!</h1>}
         {!inGame && <InputNames onFinish={this.onFinishSetup} addPlayer={this.onAddPlayer} players={players} />}
         {inGame && <Game players={players} menu={this.menu} />}
       </div>
