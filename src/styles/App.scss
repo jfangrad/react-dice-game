@@ -146,6 +146,8 @@ h1 {
   align-items: center;
 
   .controls {
+    display: flex;
+    flex-direction: column;
 
     .current-player {
       font-size: 1.5em;
@@ -168,6 +170,18 @@ h1 {
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
       }
+    }
+
+    .undo-btn {
+      background-color: red;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 5px;
+      margin: 3px;
+      align-self: flex-end;
+      justify-self: flex-end;
     }
   }
 }

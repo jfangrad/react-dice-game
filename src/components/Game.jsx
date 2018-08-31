@@ -26,7 +26,17 @@ class Game extends PureComponent {
     };
   }
 
-  updateScore = (player, value) => {
+  setTurn = (value) => {
+    this.setState({ currentPlayer: value });
+  }
+
+  playAgain = () => {
+    const newState = this.getInitialState(this.props);
+
+    this.setState(newState);
+  }
+
+  updateScore = (player, value, updateTurn = true) => {
     const { players } = this.props;
     const { points, lastRound, currentPlayer } = this.state;
 
@@ -39,19 +49,22 @@ class Game extends PureComponent {
       this.setState({ gameOver: true, winner });
     }
 
-    this.setState(p => ({
-      points: {
-        ...p.points,
-        [player]: p.points[player] + value,
-      },
-      currentPlayer: (p.currentPlayer + 1) % players.length,
-    }));
-  }
-
-  playAgain = () => {
-    const newState = this.getInitialState(this.props);
-
-    this.setState(newState);
+    if (updateTurn) {
+      this.setState(p => ({
+        points: {
+          ...p.points,
+          [player]: p.points[player] + value,
+        },
+        currentPlayer: (p.currentPlayer + 1) % players.length,
+      }));
+    } else {
+      this.setState(p => ({
+        points: {
+          ...p.points,
+          [player]: p.points[player] + value,
+        },
+      }));
+    }
   }
 
   render() {
@@ -64,7 +77,7 @@ class Game extends PureComponent {
         <div className={lastRoundClass}>Last Round!</div>
         <div className="game">
           <ScoreBoard {...this.props} {...this.state} />
-          <Controls {...this.props} {...this.state} updateScore={this.updateScore} />
+          <Controls {...this.props} {...this.state} updateScore={this.updateScore} setTurn={this.setTurn} />
           {gameOver &&
           <Modal playAgain={this.playAgain} menu={menu}>
             <div className='game-over'>{`${winner} Wins!`}</div>
