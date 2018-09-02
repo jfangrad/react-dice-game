@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputNames extends Component {
   state = {
@@ -63,6 +64,12 @@ class InputNames extends Component {
       </div>
     );
   }
+}
+
+InputNames.propTypes = {
+  players: PropTypes.array.isRequired,
+  onFinish: PropTypes.func.isRequired,
+  addPlayer: PropTypes.func.isRequired,
 }
 
 export default InputNames;

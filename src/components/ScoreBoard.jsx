@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ScoreBoard = ({ points, players, currentPlayer }) => {
   // const { points, players, currentPlayer } = props;
@@ -22,5 +23,11 @@ const ScoreBoard = ({ points, players, currentPlayer }) => {
     </ul>
   );
 };
+
+ScoreBoard.propTypes = {
+  points: PropTypes.object.isRequired,
+  players: PropTypes.array.isRequired,
+  currentPlayer: PropTypes.number.isRequired,
+}
 
 export default ScoreBoard;

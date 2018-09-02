@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Controls extends Component {
   state = { currentInput: '', lastScore: 0 };
@@ -18,8 +19,6 @@ class Controls extends Component {
   onSubmitScore = () => {
     const { updateScore, players, currentPlayer } = this.props;
     const { currentInput } = this.state;
-
-    console.log(currentInput);
 
     this.setState({ lastScore: Number.parseInt(currentInput, 10) });
     updateScore(players[currentPlayer], Number.parseInt(currentInput, 10));
@@ -62,6 +61,13 @@ class Controls extends Component {
       </div>
     );
   }
+}
+
+Controls.propTypes = {
+  players: PropTypes.array.isRequired,
+  currentPlayer: PropTypes.number.isRequired,
+  setTurn: PropTypes.func.isRequired,
+  updateScore: PropTypes.func.isRequired,
 }
 
 export default Controls;

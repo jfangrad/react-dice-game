@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import ScoreBoard from './ScoreBoard';
 import Controls from './Controls';
 import Modal from './Modal';
@@ -87,6 +88,11 @@ class Game extends PureComponent {
       </div>
     );
   }
+}
+
+Game.PropTypes = {
+  players: PropTypes.array.isRequired,
+  menu: PropTypes.func.isRequired,
 }
 
 export default Game;
